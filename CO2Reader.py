@@ -70,7 +70,7 @@ if __name__ == "__main__":
     parser.add_argument('tty', default=defaultPort, help='tty port to connect', type=str, nargs='?')
     parser.add_argument('timeout', default=10, help='timeout between requests', type=int, nargs='?')
     parser.add_argument('--single', action='store_true', help='single measure')
-    parser.add_argument('--quit', '-q', action='store_true', help='be quit')
+    parser.add_argument('--quiet', '-q', action='store_true', help='be quiet')
     args = parser.parse_args()
     port = args.tty
     timeout = args.timeout
@@ -78,7 +78,7 @@ if __name__ == "__main__":
         timeout = 0
 
     conn = MHZ14Reader(port)
-    if not args.quit:
+    if not args.quiet:
         sys.stderr.write("Connected to %s\n" % conn.link.name)
     while True:
         status = conn.get_status()
